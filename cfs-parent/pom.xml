@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.example</groupId>
+        <artifactId>CFS719</artifactId>
+        <version>1.1-RELEASE</version>
+    </parent>
+    <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>cfs-parent</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <license.includeTransitiveDependencies>false</license.includeTransitiveDependencies>
+
+        <version.camunda>7.19.0</version.camunda>
+        <version.joda-time>2.1</version.joda-time>
+        <version.uuid-generator>3.2.0</version.uuid-generator>
+        <version.camunda.commons>1.12.0</version.camunda.commons>
+        <version.camunda.connect>1.5.6</version.camunda.connect>
+        <version.camunda.spin>1.19.0</version.camunda.spin>
+        <version.camunda.template-engines>2.1.0</version.camunda.template-engines>
+        <version.camunda.ee.xslt-plugin>1.1.0</version.camunda.ee.xslt-plugin>
+        <version.feel-scala>1.15.3</version.feel-scala>
+        <plugin.version.javadoc>3.0.1</plugin.version.javadoc>
+
+        <!-- database driver versions -->
+<!--        <version.h2>2.1.214</version.h2>-->
+<!--        <version.h2-v1>1.4.190</version.h2-v1>&lt;!&ndash; used for instance migration qa &ndash;&gt;-->
+        <version.oracle-12>12.1.0.2</version.oracle-12>
+        <version.oracle-19>19.3.0.0</version.oracle-19>
+        <version.oracle>${version.oracle-12}</version.oracle>
+        <version.mariadb>1.7.6</version.mariadb>
+        <version.mariadb-v1>1.1.8</version.mariadb-v1>
+        <version.mysql>8.0.32</version.mysql>
+        <version.sqlserver>8.4.1.jre8</version.sqlserver>
+        <version.db2-11.5>11.5.0.0</version.db2-11.5>
+        <version.db2>${version.db2-11.5}</version.db2>
+        <version.postgresql>42.5.4</version.postgresql>
+        <version.liquibase>4.8.0</version.liquibase>
+
+        <!-- CockroachDB is compatible with PostgreSQL 9.5,
+        so a different version of the JDBC driver needs to be used -->
+        <version.cockroachdb>42.2.9</version.cockroachdb>
+
+        <!-- needed for sql script and backward compatibility checks -->
+        <camunda.version.old>7.18.0</camunda.version.old>
+
+        <!-- Testcontainers JDBC URL parameters. By default, an empty string -->
+        <database.tc.params />
+
+        <version.quarkus>2.16.4.Final</version.quarkus>
+        <version.spring.framework>5.3.22</version.spring.framework>
+        <version.spring-boot>2.7.9</version.spring-boot>
+        <version.cxf>3.0.3</version.cxf>
+        <version.resteasy>3.15.3.Final</version.resteasy>
+        <version.jersey2>2.34</version.jersey2>
+        <!-- use minimum version of resteasy and jersey -->
+        <version.jaxrs.api>2.0.1.Final</version.jaxrs.api>
+        <version.groovy>2.4.21</version.groovy>
+        <version.graal.js>21.1.0</version.graal.js>
+        <version.icu.icu4j>68.2</version.icu.icu4j>
+        <version.gson>2.8.9</version.gson>
+        <version.openjpa>2.4.3</version.openjpa>
+        <version.hibernate>5.6.5.Final</version.hibernate>
+        <version.hikaricp>4.0.3</version.hikaricp>
+        <version.jackson>2.14.1</version.jackson>
+        <version.xml.bind-api>2.3.3</version.xml.bind-api>
+        <version.xml.jaxb-impl>2.3.6</version.xml.jaxb-impl>
+        <version.snakeyaml>1.33</version.snakeyaml>
+
+        <version.slf4j>1.7.26</version.slf4j>
+        <version.logback>1.2.11</version.logback>
+        <version.junit>4.13.1</version.junit>
+        <version.assertj>2.9.1</version.assertj>
+        <version.mockito>4.3.1</version.mockito>
+        <version.wiremock>2.27.2</version.wiremock>
+        <version.wiremock-jre8>2.27.2</version.wiremock-jre8>
+        <version.testcontainers>1.16.0</version.testcontainers>
+
+        <version.commonj>1.1.0</version.commonj>
+        <version.bouncycastle>1.47</version.bouncycastle>
+
+        <!-- application servers -->
+        <version.wildfly>27.0.1.Final</version.wildfly>
+        <version.wildfly.core>19.0.1.Final</version.wildfly.core>
+        <version.wildfly26>26.0.1.Final</version.wildfly26>
+        <version.wildfly26.core>18.0.4.Final</version.wildfly26.core>
+
+        <version.tomcat>9.0.72</version.tomcat>
+
+        <version.arquillian>1.1.10.Final</version.arquillian>
+        <version.shrinkwrap.resolvers>2.2.2</version.shrinkwrap.resolvers>
+        <version.selenium>4.1.4</version.selenium>
+        <version.freemarker>2.3.31</version.freemarker>
+
+        <version.jboss-javaee-spec>3.0.2.Final</version.jboss-javaee-spec>
+        <version.jakarta-ee-spec>10.0.0</version.jakarta-ee-spec>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--<dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${version.h2}</version>
+            </dependency>-->
+            <dependency>
+                <groupId>com.oracle.jdbc</groupId>
+                <artifactId>ojdbc7</artifactId>
+                <version>${version.oracle}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.oracle.ojdbc</groupId>
+                <artifactId>ojdbc8</artifactId>
+                <version>${version.oracle}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mariadb.jdbc</groupId>
+                <artifactId>mariadb-java-client</artifactId>
+                <version>${version.mariadb}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${version.mysql}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.microsoft.sqlserver</groupId>
+                <artifactId>mssql-jdbc</artifactId>
+                <version>${version.sqlserver}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${version.postgresql}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ibm.db2</groupId>
+                <artifactId>jcc</artifactId>
+                <version>${version.db2}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.camunda.bpm</groupId>
+                <artifactId>camunda-bom</artifactId>
+                <version>${version.camunda}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- test plugins -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.2</version>
+                    <configuration>
+                        <runOrder>hourly</runOrder>
+                        <systemPropertyVariables>
+                            <myWorkingDir>${project.build.directory}</myWorkingDir>
+                        </systemPropertyVariables>
+                        <argLine>-Xmx968m -Duser.language=en -Duser.region=US -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=${project.build.directory}/heap_dump.hprof</argLine>
+                        <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>2.16</version>
+                    <configuration>
+                        <argLine>-Xmx968m</argLine>
+                        <runOrder>hourly</runOrder>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>integration-test</goal>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- code plugins -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.8</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.6</version>
+                </plugin>
+
+                <!-- artifact plugins -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <configuration>
+                        <createSourcesJar>true</createSourcesJar>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>1.8</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>1.9.1</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.cargo</groupId>
+                    <artifactId>cargo-maven3-plugin</artifactId>
+                    <version>1.10.5</version>
+                </plugin>
+                <plugin>
+                    <groupId>net.kennychua</groupId>
+                    <artifactId>maven-urlpoller-plugin</artifactId>
+                    <version>1.0.3</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>sql-maven-plugin</artifactId>
+                    <version>1.5</version>
+                    <configuration>
+                        <keepFormat>true</keepFormat>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>clirr-maven-plugin</artifactId>
+                    <version>2.8</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.4.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.3.2</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <configuration>
+                        <failOnError>false</failOnError>
+                        <additionalJOptions>
+                            <additionalJOption>-Xdoclint:none</additionalJOption>
+                            <additionalJOption>--ignore-source-errors</additionalJOption>
+                        </additionalJOptions>
+                        <doctitle>Camunda Platform Javadocs ${project.version}</doctitle>
+                        <windowtitle>Camunda Platform Javadocs ${project.version}</windowtitle>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    <profiles></profiles>
+
+    <repositories>
+        <repository>
+            <id>JBoss public</id>
+            <name>jboss</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+        <!-- required for commonJ dependency -->
+        <repository>
+            <id>com.springsource.repository.bundles.external</id>
+            <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+            <url>https://repo.spring.io/plugins-release</url>
+        </repository>
+
+<!--        <repository>-->
+<!--            <id>maven-releases</id>-->
+<!--            <url>http://nexus.enncloud.cn/repository/releases/</url>-->
+<!--        </repository>-->
+<!--        <repository>-->
+<!--            <id>maven-snapshots</id>-->
+<!--            <url>http://nexus.enncloud.cn/repository/snapshots/</url>-->
+<!--        </repository>-->
+    </repositories>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>camunda services GmbH</name>
+        <url>http://www.camunda.com</url>
+    </organization>
+
+    <url>http://www.camunda.org</url>
+
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>maven-releases</id>-->
+<!--            <url>http://nexus.enncloud.cn/repository/releases/</url>-->
+<!--        </repository>-->
+<!--        <snapshotRepository>-->
+<!--            <id>maven-snapshots</id>-->
+<!--            <url>http://nexus.enncloud.cn/repository/snapshots/</url>-->
+<!--        </snapshotRepository>-->
+<!--    </distributionManagement>-->
+
+</project>

@@ -1,0 +1,42 @@
+server:
+  port: 8888 # 端口号
+
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/test  # 数据库
+#    driver-class-name: com.mysql.jdbc.Driver
+#    username: admin
+#    password: admin
+spring:
+  datasource:
+    url: jdbc:mysql://10.39.202.254:3306/enn_intelligent_tool?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true    # 数据库
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: enn_intelligent_tool_rw
+    password: Btg#no!j@cQ9
+
+
+camunda.bpm:
+#  full 所有历史数据都会被保存，包括变量的更新（默认）
+#  audit 只有历史的流程实例，活动实例，表单数据等会被保存
+#  auto 数据之前配置的是什么级别就是用什么级别，如果没配置则是audit级别
+#  none 不存储历史数据
+  history-level: full
+  auto-deployment-enabled: false
+  authorization:
+    tenant-check-enabled: true #租户校验，默认为true
+  default-number-of-retries: 4 #任务失败后的重试次数(针对异步延续任务或job任务)
+  admin-user:
+    id: demo
+    password: demo
+    firstName: Demo
+  filter:
+    create: All tasks
+  rest:
+    api:
+      enabled: true
+      path: /engine-rest
+
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启sql日志
+#    map-underscore-to-case: true # 开启驼峰映射(mp默认开启)
