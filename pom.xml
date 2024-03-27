@@ -20,6 +20,7 @@
         <module>cfs-engine</module>
         <module>cfs-rest</module>
         <module>cfs-boot</module>
+        <module>cfs-service</module>
     </modules>
 
 </project>

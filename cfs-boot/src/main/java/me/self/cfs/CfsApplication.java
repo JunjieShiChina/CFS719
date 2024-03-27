@@ -1,4 +1,4 @@
-package org.camunda.bpm;
+package me.self.cfs;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"org.camunda.bpm", "me.self.cfs"})
 public class CfsApplication {
     private static final Logger log = LoggerFactory.getLogger(CfsApplication.class);
 
