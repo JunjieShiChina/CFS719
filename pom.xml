@@ -21,6 +21,8 @@
         <module>cfs-rest</module>
         <module>cfs-boot</module>
         <module>cfs-service</module>
+        <module>cfs-engine-spring</module>
+        <module>cfs-run-core</module>
     </modules>
 
 </project>

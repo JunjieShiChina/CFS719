@@ -39,27 +39,47 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
 <!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-web</artifactId>-->
+<!--            <groupId>org.camunda.bpm.springboot</groupId>-->
+<!--            <artifactId>camunda-bpm-spring-boot-starter</artifactId>-->
+<!--            <version>${version.camunda}</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.camunda.bpm</groupId>-->
+<!--                    <artifactId>camunda-engine</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.camunda.bpm</groupId>-->
+<!--                    <artifactId>camunda-engine-rest-core</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.camunda.bpm</groupId>-->
+<!--                    <artifactId>camunda-engine-spring</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
 <!--        </dependency>-->
 
-        <dependency>
-            <groupId>org.camunda.bpm.springboot</groupId>
-            <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-            <version>${version.camunda}</version>
-            <!--排除官方引用jar包，用自己工程里的源代码包-->
-            <exclusions>
-                <exclusion>
-                    <groupId>org.camunda.bpm</groupId>
-                    <artifactId>camunda-engine</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.camunda.bpm</groupId>
-                    <artifactId>camunda-engine-rest-core</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.camunda.bpm.springboot</groupId>-->
+<!--            <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>-->
+<!--            <version>${version.camunda}</version>-->
+<!--            &lt;!&ndash;排除官方引用jar包，用自己工程里的源代码包&ndash;&gt;-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.camunda.bpm</groupId>-->
+<!--                    <artifactId>camunda-engine</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.camunda.bpm</groupId>-->
+<!--                    <artifactId>camunda-engine-rest-core</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
 
 <!--        <dependency>-->
 <!--            <groupId>org.camunda.bpm.springboot</groupId>-->
@@ -117,6 +137,18 @@
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>cfs-rest</artifactId>
+            <version>1.1-RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>cfs-engine-spring</artifactId>
+            <version>1.1-RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>cfs-run-core</artifactId>
             <version>1.1-RELEASE</version>
         </dependency>
     </dependencies>
