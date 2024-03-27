@@ -44,20 +44,62 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>cfs-engine-spring</artifactId>
+            <version>1.1-RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>cfs-rest</artifactId>
+            <version>1.1-RELEASE</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.camunda.bpm.springboot</groupId>
             <artifactId>camunda-bpm-spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.camunda.bpm</groupId>
+                    <artifactId>camunda-engine-rest-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.camunda.bpm</groupId>
+                    <artifactId>camunda-engine-spring</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>org.camunda.bpm</groupId>
             <artifactId>camunda-engine-plugin-spin</artifactId>
             <version>${version.camunda}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.camunda.bpm</groupId>
+                    <artifactId>camunda-engine-rest-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.camunda.bpm</groupId>
+                    <artifactId>camunda-engine-spring</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>org.camunda.bpm</groupId>
             <artifactId>camunda-engine-plugin-connect</artifactId>
             <version>${version.camunda}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.camunda.bpm</groupId>
+                    <artifactId>camunda-engine-rest-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.camunda.bpm</groupId>
+                    <artifactId>camunda-engine-spring</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -75,6 +117,20 @@
         <dependency>
             <groupId>org.camunda.bpm.springboot</groupId>
             <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.camunda.bpm</groupId>
+                    <artifactId>camunda-engine</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.camunda.bpm</groupId>
+                    <artifactId>camunda-engine-rest-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.camunda.bpm</groupId>
+                    <artifactId>camunda-engine-spring</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- jersey-server (transitive dependency of camunda-bpm-spring-boot-starter-rest)
