@@ -139,17 +139,24 @@
             <scope>provided</scope>
         </dependency>
 
+<!--        排除官方的-->
+<!--        <dependency>-->
+<!--            <groupId>org.camunda.bpm</groupId>-->
+<!--            <artifactId>camunda-engine</artifactId>-->
+<!--            <version>${version.camunda}</version>-->
+<!--            <scope>provided</scope>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.springframework</groupId>-->
+<!--                    <artifactId>spring-jcl</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
+
         <dependency>
-            <groupId>org.camunda.bpm</groupId>
-            <artifactId>camunda-engine</artifactId>
-            <version>${version.camunda}</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-jcl</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.example</groupId>
+            <artifactId>cfs-engine</artifactId>
+            <version>1.1-RELEASE</version>
         </dependency>
 
         <dependency>
